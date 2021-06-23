@@ -45,4 +45,5 @@ jobs:
 
       - name: Deploy
         run: |
+          ls
           gcloud app deploy ${{env.DEPLO_yaml}} --quiet
