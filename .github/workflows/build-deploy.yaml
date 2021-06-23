@@ -19,9 +19,8 @@ on:
 env:
   NODE_VERSION: 12.x
   CI: true
-  GCP_APPLICATION: cartservices
-  GCP_IMG_PROJECT: ingka-sp-saljapro-cicd
-  DEPLO_yaml: /app.yaml
+  DEPLO_yaml: app.yaml
+  APP_WORKING_DIR: "./"
 jobs:
   development:
     name: Deploy to development
@@ -44,6 +43,7 @@ jobs:
           gcloud config set project ${{ env.GCP_PROJECT }}
 
       - name: Deploy
+        working-directory: ${{ env.APP_WORKING_DIR }}
         run: |
           ls
           gcloud app deploy ${{env.DEPLO_yaml}} --quiet
