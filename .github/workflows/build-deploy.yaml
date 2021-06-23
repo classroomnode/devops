@@ -21,7 +21,7 @@ env:
   CI: true
   GCP_APPLICATION: cartservices
   GCP_IMG_PROJECT: ingka-sp-saljapro-cicd
-  DEPLO_yaml: ./app.yaml
+  DEPLO_yaml: /app.yaml
 jobs:
   development:
     name: Deploy to development
