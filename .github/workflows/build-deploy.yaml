@@ -21,6 +21,7 @@ env:
   CI: true
   GCP_APPLICATION: cartservices
   GCP_IMG_PROJECT: ingka-sp-saljapro-cicd
+  DEPLO_yaml: ./app.yaml
 jobs:
   development:
     name: Deploy to development
@@ -38,10 +39,10 @@ jobs:
         with:
           service_account_key: ${{ secrets.GCP_DEPLOY_CREDENTIALS }}
           export_default_credentials: true
-      - name: Deploy
+      - name: set project
         run: |
           gcloud config set project ${{ env.GCP_PROJECT }}
 
       - name: Deploy
         run: |
-          gcloud app deploy app.yaml --quiet
+          gcloud app deploy ${{env.DEPLO_yaml}} --quiet
